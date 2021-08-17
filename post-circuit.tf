@@ -47,7 +47,7 @@ resource "azurerm_virtual_network_gateway" "example" {
 
   type = "ExpressRoute"
 
-  sku = "ErGw1AZ" //https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku -- CHANGE IF REGION WITHOUT AZs
+  sku = "ErGw3AZ" //https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku -- CHANGE IF REGION WITHOUT AZs
 
   ip_configuration {
     public_ip_address_id          = azurerm_public_ip.example.id
