@@ -10,6 +10,7 @@ resource "azurerm_express_route_port" "example" {
   peering_location    = "Equinix-Seattle-SE2"
   bandwidth_in_gbps   = 10
   encapsulation       = "Dot1Q"
+  //In the event that MACSEC is required, additional information can be located here https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_port#link1
 }
 
 resource "azurerm_express_route_circuit" "example" {
