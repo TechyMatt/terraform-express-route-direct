@@ -2,7 +2,7 @@
 //once the circuit is up the peering can then proceed
 
 //https://docs.microsoft.com/en-us/azure/expressroute/expressroute-howto-routing-portal-resource-manager#to-create-azure-private-peering
-resource "azurerm_express_route_circuit_peering" "example" { 
+resource "azurerm_express_route_circuit_peering" "example" {
   peering_type                  = "AzurePrivatePeering"
   express_route_circuit_name    = azurerm_express_route_circuit.example.name
   resource_group_name           = azurerm_resource_group.example.name
@@ -35,15 +35,15 @@ resource "azurerm_public_ip" "example" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
-  allocation_method = "Dynamic"
-sku = "Standard" // CHANGE TO BASIC IF REGION WITHOUT AZs
+  allocation_method = "Static"
+  sku               = "Standard" // CHANGE TO BASIC IF REGION WITHOUT AZs
 }
 
 //Once the circuit is provisioned the virtual network gateway can proceed
 resource "azurerm_virtual_network_gateway" "example" {
   name                = "ER-gateway"
-  location              = azurerm_resource_group.example.location
-  resource_group_name   = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
 
   type = "ExpressRoute"
 
@@ -59,8 +59,8 @@ resource "azurerm_virtual_network_gateway" "example" {
 //Once the Virtual network Gateway is created then the connection can proceed
 resource "azurerm_virtual_network_gateway_connection" "local" {
   name                = "ER-Gateway-Connect"
-  location              = azurerm_resource_group.example.location
-  resource_group_name   = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
 
   type                       = "ExpressRoute"
   virtual_network_gateway_id = azurerm_virtual_network_gateway.example.id

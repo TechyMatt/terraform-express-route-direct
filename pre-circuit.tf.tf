@@ -18,7 +18,7 @@ resource "azurerm_express_route_circuit" "example" {
   location              = azurerm_resource_group.example.location
   resource_group_name   = azurerm_resource_group.example.name
   express_route_port_id = azurerm_express_route_port.example.id
-  bandwidth_in_gbps     = 5
+  bandwidth_in_gbps     = 10
 
   sku {
     tier   = "Standard"
